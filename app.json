@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "app",
+    "slug": "app",
+    "version": "1.0.0",
+    "scheme": "app",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#45A75B",
+    "splash": {
+      "image": "./assets/splash.png",
+<<<<<<< HEAD
+      "resizeMode": "native",
+=======
+      "resizeMode": "contain",
+>>>>>>> 3a83cab (Feat: Tela inicial e splash screen finalizadas)
+      "backgroundColor": "#45A75B"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#45A75B"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ]
+  }
+}
