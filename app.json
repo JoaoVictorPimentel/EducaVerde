@@ -10,11 +10,7 @@
     "backgroundColor": "#45A75B",
     "splash": {
       "image": "./assets/splash.png",
-<<<<<<< HEAD
       "resizeMode": "native",
-=======
-      "resizeMode": "contain",
->>>>>>> 3a83cab (Feat: Tela inicial e splash screen finalizadas)
       "backgroundColor": "#45A75B"
     },
     "ios": {
