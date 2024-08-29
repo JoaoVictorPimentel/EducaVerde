@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginVertical: 15,
         letterSpacing: 2,
+        textTransform: 'uppercase',
     },
     temeContainer: {
         width: '80%',

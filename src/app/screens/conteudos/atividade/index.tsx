@@ -45,7 +45,7 @@ export default function TurmasScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center'
+        alignItems: 'center',
     },
     titleContent: {
         borderColor: '#3B934F',
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
         width: '92%',
         marginTop: 30,
         textAlign: 'justify',
+        marginBottom: 20,
     },
     header: {
         backgroundColor: '#45A75B',
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginVertical: 15,
         letterSpacing: 2,
+        textTransform: 'uppercase',
     },
     temeContainer: {
         width: '80%',

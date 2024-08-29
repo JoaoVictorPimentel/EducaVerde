@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import Inicio from './src/app/index';
+import Inicio from './src/app/inicio';
 
 export default function App() {
   return (<Inicio/>);
