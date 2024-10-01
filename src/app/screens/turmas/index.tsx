@@ -16,12 +16,11 @@ export default function TurmasScreen() {
             source={require('./../../../assets/img/fundoPadrao.png')}
             style={{ width: '100%', height: '100%' }}
         >
-
             <ScrollView>
                 <View style={styles.header}>
                     <TouchableOpacity onPress={() => router.back()} style={styles.touchable}>
                         <Image source={require('./../../../assets/img/educaVerdeLateral.png')}
-                            style={{height: 35}}/>
+                            style={{height: 29}}/>
                     </TouchableOpacity>
                 </View>
                 <Text style={styles.title}>TURMAS</Text>

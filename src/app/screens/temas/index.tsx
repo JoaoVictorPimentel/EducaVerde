@@ -38,7 +38,6 @@ export default function TemasScreen() {
         return null;
     }
 
-    // Converter o nome da turma para o número correspondente
     const turmaNumero = turmaMap[turma as string] || 'Desconhecido';
 
     return (
