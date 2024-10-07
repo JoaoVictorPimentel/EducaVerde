@@ -112,6 +112,6 @@ const styles = StyleSheet.create({
         color: '#00370D',
         textAlign: 'justify',
         fontFamily: 'Inter_400Regular',
-        fontSize: 16,
+        fontSize: 17,
     }
 });
