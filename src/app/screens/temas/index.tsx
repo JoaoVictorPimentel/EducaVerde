@@ -53,7 +53,7 @@ export default function TemasScreen() {
                     </TouchableOpacity>
                 </View>
                 <Text style={styles.title}>{turmaNumero}° ANO - TEMAS</Text>
-                <View style={styles.temasContainer}>
+                <View>
                     {conteudos.length > 0 ? (
                         conteudos.map((conteudo, index) => (
                             <TouchableOpacity 
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
         borderRadius: 17,
         marginHorizontal: 31,
         marginBottom: 20,
+        minHeight: 75,
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 17,
@@ -128,7 +129,4 @@ const styles = StyleSheet.create({
         marginVertical: 40,
         letterSpacing: 2,
     },
-    temasContainer: {
-        marginTop: 30
-    }
 });

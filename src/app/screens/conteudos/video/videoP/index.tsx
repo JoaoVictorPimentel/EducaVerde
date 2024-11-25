@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     },
     temeContainer: {
         width: '80%',
-        height: 58,
+        minHeight: 58,
         borderRadius: 25,
         backgroundColor: '#3B934F',
         flex: 1,
