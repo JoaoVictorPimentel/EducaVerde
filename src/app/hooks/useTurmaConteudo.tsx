@@ -6,10 +6,11 @@ const useTurmaConteudo = (turma: any) => {
     const [conteudo, setConteudo] = useState([]);
     useEffect(() => {
         if (turma) {
+            console.log("Consultando API para turma: ", turma);
             axios.get(`${API_URL}/${turma}`)
                 .then(response => {
                     setConteudo(response.data);
-                    console.log(response);
+                    // console.log(response);
                 })
                 .catch(error => console.error(error));
         }

@@ -89,7 +89,6 @@ export default function TemasScreen() {
 const styles = StyleSheet.create({
     container2: {
         backgroundColor: '#3B934F',
-        height: 74,
         borderRadius: 17,
         marginHorizontal: 31,
         marginBottom: 20,
