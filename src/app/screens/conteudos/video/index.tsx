@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 16,
-        fontWeight: 600,
+        fontWeight: '600',
         fontFamily: 'Inter_600SemiBold',
         color: '#3B934F',
         textAlign: 'center',

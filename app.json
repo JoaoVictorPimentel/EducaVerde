@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "app",
+    "name": "Educa Verde",
     "slug": "app",
     "version": "1.0.0",
     "scheme": "app",
@@ -10,7 +10,7 @@
     "backgroundColor": "#45A75B",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "native",
+      "resizeMode": "cover",
       "backgroundColor": "#45A75B"
     },
     "ios": {
@@ -20,7 +20,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#45A75B"
-      }
+      },
+      "package": "com.citec.educaverde"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -28,6 +29,20 @@
     "plugins": [
       "expo-router",
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "0e25bcf1-eac5-478e-bc7b-b9e10d5760f9"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/0e25bcf1-eac5-478e-bc7b-b9e10d5760f9"
+    }
   }
 }

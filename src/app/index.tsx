@@ -15,7 +15,7 @@ export default function SplashScreenApp() {
 
     return (
         <View style={styles.container}>
-            <Image source={require('../../assets/splash.png')} style={styles.image} />
+            <Image source={require('../assets/img/educaVerdeLogo.png')} style={styles.image} />
             <ActivityIndicator size="large" color="#ffff" />
         </View>
     );
@@ -30,5 +30,6 @@ const styles = StyleSheet.create({
     },
     image: {
         marginBottom: 20,
+        resizeMode: 'cover'
     },
 });
