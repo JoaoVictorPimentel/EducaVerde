@@ -1,11 +1,13 @@
 import { Inter_400Regular, Inter_600SemiBold, Inter_700Bold, useFonts } from '@expo-google-fonts/inter';
 import { Icon } from '@rneui/themed';
 import { router, useLocalSearchParams } from 'expo-router';
-import React from 'react';
+import React, { useState } from 'react';
 import { Alert, ImageBackground, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import YouTubeIframe from 'react-native-youtube-iframe';
 
 export default function TurmasScreen() {
     const { video_exposicaop_conteudo, video_exposicaop_link } = useLocalSearchParams();
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
 
     let [fontsLoaded] = useFonts({
         Inter_600SemiBold,
@@ -19,15 +21,29 @@ export default function TurmasScreen() {
 
     const openLink = () => {
         let link = Array.isArray(video_exposicaop_link) ? video_exposicaop_link[0] : video_exposicaop_link;
-    
+
         if (link) {
-            Linking.openURL(link).catch((err) =>
-                console.error('Erro ao tentar abrir o link do YouTube:', err)
-            );
+            const videoId = getVideoId(link);
+            if (videoId) {
+                setIsVideoOpen(true);
+            } else {
+                Alert.alert('Vídeo Indisponível', 'Este link do vídeo do YouTube não é válido.');
+            }
         } else {
             Alert.alert('Vídeo Indisponível', 'Este conteúdo não possui vídeo.');
         }
     };
+
+    const getVideoId = (link: string | string[]) => {
+        if (typeof link === 'string') {
+            const match = link.split('v=')[1];
+            if (match) {
+                return match.split('&')[0];
+            }
+        }
+        return null;
+    };
+
     return (
         <ImageBackground
             source={require('./../../../../../assets/img/fundoPadrao.png')}
@@ -47,10 +63,25 @@ export default function TurmasScreen() {
                     <Text style={styles.text}>{video_exposicaop_conteudo}</Text>
                 </View>
                 <View style={styles.containerVideo}>
-                    <TouchableOpacity style={styles.contentVideo} onPress={openLink}>
-                        <Icon name="youtube-play" type='font-awesome' size={25} color="#fff" />
-                        <Text style={styles.videoText}>Vídeo exposição prática</Text>
-                    </TouchableOpacity>
+                    {isVideoOpen ? (
+                        <YouTubeIframe
+                            height={200} 
+                            videoId={getVideoId(video_exposicaop_link)} 
+                            play={true} 
+                            onChangeState={(state) => console.log(state)} 
+                        />
+                    ) : (
+                        <TouchableOpacity style={styles.contentVideo} onPress={openLink}>
+                            <Icon name="youtube-play" type='font-awesome' size={25} color="#fff" />
+                            <Text style={styles.videoText}>Vídeo exposição prática</Text>
+                        </TouchableOpacity>
+                    )}
+                    {video_exposicaop_link && !isVideoOpen && (
+                        <TouchableOpacity style={styles.youtubeButton} onPress={() => Linking.openURL(`https://www.youtube.com/watch?v=${getVideoId(video_exposicaop_link)}`)}>
+                            <Icon name="youtube" type='font-awesome' size={25} color="#fff" />
+                            <Text style={styles.youtubeButtonText}>Assistir no YouTube</Text>
+                        </TouchableOpacity>
+                    )}
                 </View>
             </ScrollView>
         </ImageBackground>
@@ -60,10 +91,6 @@ export default function TurmasScreen() {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center'
-    },
-    containerText: {
-        color: '#fff',
-        fontSize: 15,
     },
     contentText: {
         width: '92%',
@@ -111,7 +138,7 @@ const styles = StyleSheet.create({
     },
     containerVideo: {
         width: '93%',
-        marginTop: '30%'
+        marginTop: '15%'
     },
     contentVideo: {
         backgroundColor: '#59CA72',
@@ -127,6 +154,20 @@ const styles = StyleSheet.create({
         fontSize: 19,
         color: 'white',
         marginLeft: 10,
-    }
-
+    },
+    youtubeButton: {
+        backgroundColor: '#3B934F',
+        height: 58,
+        borderRadius: 25,
+        marginVertical: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    youtubeButtonText: {
+        fontFamily: 'Inter_700Bold',
+        fontSize: 19,
+        color: 'white',
+        marginLeft: 10,
+    },
 });
