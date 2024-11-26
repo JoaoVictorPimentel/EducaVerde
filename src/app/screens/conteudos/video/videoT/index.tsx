@@ -38,12 +38,12 @@ export default function TurmasScreen() {
         if (typeof link === 'string') {
             const match = link.split('v=')[1];
             if (match) {
-                return match.split('&')[0]; 
+                return match.split('&')[0];
             }
         }
-        return null; 
+        return null;
     };
-    
+
     return (
         <ImageBackground
             source={require('./../../../../../assets/img/fundoPadrao.png')}
@@ -65,18 +65,26 @@ export default function TurmasScreen() {
                 <View style={styles.containerVideo}>
                     {isVideoOpen ? (
                         <YouTubeIframe
-                            height={200} 
-                            videoId={getVideoId(video_exposicaot_link)} 
-                            play={true} 
-                            onChangeState={(state) => console.log(state)} 
+                            height={200}
+                            videoId={getVideoId(video_exposicaot_link)}
+                            play={true}
+                            onChangeState={(state) => console.log(state)}
                         />
+
                     ) : (
-                        <TouchableOpacity style={styles.contentVideo} onPress={openLink}>
-                            <Icon name="youtube-play" type='font-awesome' size={25} color="#fff" />
-                            <Text style={styles.videoText}>Vídeo exposição teórica</Text>
-                        </TouchableOpacity>
+                        <View>
+                            <TouchableOpacity style={styles.contentVideo} onPress={openLink}>
+                                <Icon name="youtube-play" type='font-awesome' size={25} color="#fff" />
+                                <Text style={styles.videoText}>Vídeo exposição teórica</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.youtubeButton} onPress={() => Linking.openURL(`https://www.youtube.com/watch?v=${getVideoId(video_exposicaot_link)}`)}>
+                                <Icon name="youtube" type='font-awesome' size={25} color="#fff" />
+                                <Text style={styles.youtubeButtonText}>Assistir no YouTube</Text>
+                            </TouchableOpacity>
+                        </View>
+
                     )}
-                    {video_exposicaot_link && !isVideoOpen && (
+                    {video_exposicaot_link && isVideoOpen && (
                         <TouchableOpacity style={styles.youtubeButton} onPress={() => Linking.openURL(`https://www.youtube.com/watch?v=${getVideoId(video_exposicaot_link)}`)}>
                             <Icon name="youtube" type='font-awesome' size={25} color="#fff" />
                             <Text style={styles.youtubeButtonText}>Assistir no YouTube</Text>

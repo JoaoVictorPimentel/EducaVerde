@@ -65,18 +65,24 @@ export default function TurmasScreen() {
                 <View style={styles.containerVideo}>
                     {isVideoOpen ? (
                         <YouTubeIframe
-                            height={200} 
-                            videoId={getVideoId(video_exposicaop_link)} 
-                            play={true} 
-                            onChangeState={(state) => console.log(state)} 
+                            height={200}
+                            videoId={getVideoId(video_exposicaop_link)}
+                            play={true}
+                            onChangeState={(state) => console.log(state)}
                         />
                     ) : (
-                        <TouchableOpacity style={styles.contentVideo} onPress={openLink}>
-                            <Icon name="youtube-play" type='font-awesome' size={25} color="#fff" />
-                            <Text style={styles.videoText}>Vídeo exposição prática</Text>
-                        </TouchableOpacity>
+                        <View>
+                            <TouchableOpacity style={styles.contentVideo} onPress={openLink}>
+                                <Icon name="youtube-play" type='font-awesome' size={25} color="#fff" />
+                                <Text style={styles.videoText}>Vídeo exposição prática</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.youtubeButton} onPress={() => Linking.openURL(`https://www.youtube.com/watch?v=${getVideoId(video_exposicaop_link)}`)}>
+                                <Icon name="youtube" type='font-awesome' size={25} color="#fff" />
+                                <Text style={styles.youtubeButtonText}>Assistir no YouTube</Text>
+                            </TouchableOpacity>
+                        </View>
                     )}
-                    {video_exposicaop_link && !isVideoOpen && (
+                    {video_exposicaop_link && isVideoOpen && (
                         <TouchableOpacity style={styles.youtubeButton} onPress={() => Linking.openURL(`https://www.youtube.com/watch?v=${getVideoId(video_exposicaop_link)}`)}>
                             <Icon name="youtube" type='font-awesome' size={25} color="#fff" />
                             <Text style={styles.youtubeButtonText}>Assistir no YouTube</Text>
